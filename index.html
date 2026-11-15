@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Femboycraft — Third-Party Launcher for One Client</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0b0a14;
+      color: #f4f4f6;
+      overflow-x: hidden;
+    }
+
+    /* Arrière-plan dégradé type crépuscule pixelisé / violet */
+    .hero-glow {
+      background:
+        radial-gradient(circle at 75% 85%, rgba(236, 72, 153, 0.22) 0%, transparent 45%),
+        radial-gradient(circle at 20% 25%, rgba(124, 58, 237, 0.18) 0%, transparent 50%),
+        linear-gradient(180deg, #0b0a14 0%, #141129 65%, #1f1638 100%);
+    }
+
+    /* Grille subtile en arrière-plan */
+    .bg-grid {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    }
+
+    /* Slider personnalisé pour le benchmark */
+    input[type=range] {
+      -webkit-appearance: none;
+      background: transparent;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 18px;
+      width: 6px;
+      border-radius: 3px;
+      background: #ffffff;
+      cursor: pointer;
+      margin-top: -6px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 6px;
+      cursor: pointer;
+      background: #27243d;
+      border-radius: 999px;
+    }
+  </style>
+</head>
+<body class="hero-glow bg-grid min-h-screen flex flex-col justify-between selection:bg-violet-500 selection:text-white">
+
+  <!-- Barre de navigation -->
+  <header class="w-full border-b border-white/5 backdrop-blur-md bg-[#0b0a14]/70 sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      
+      <!-- Logo + Navigation -->
+      <div class="flex items-center gap-8">
+        <a href="#" class="flex items-center gap-2.5 font-bold text-lg tracking-tight text-white">
+          <span class="w-7 h-7 rounded-lg bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center shadow-lg shadow-violet-500/25">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </span>
+          Femboycraft
+        </a>
+
+        <nav class="hidden md:flex items-center gap-6 text-sm text-zinc-400 font-medium">
+          <a href="#features" class="hover:text-white transition">Features</a>
+          <a href="#benchmarks" class="hover:text-white transition">Benchmarks</a>
+          <a href="#releases" class="hover:text-white transition flex items-center gap-1.5">
+            Releases
+            <span class="px-1.5 py-0.5 text-[11px] font-semibold bg-violet-600/30 text-violet-300 border border-violet-500/30 rounded-full">1.0.0</span>
+          </a>
+          <a href="#faq" class="hover:text-white transition">FAQ</a>
+        </nav>
+      </div>
+
+      <!-- Boutons à droite -->
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/TON-PSEUDO/TON-REPO" target="_blank" class="hidden sm:flex items-center gap-2 text-sm text-zinc-300 hover:text-white transition font-medium">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="https://github.com/TON-PSEUDO/TON-REPO/releases/download/v1.0.0/Femboy-Craft-Setup-1.0.0.exe" download="Femboy-Craft-Setup-1.0.0.exe" class="px-4 py-1.5 text-sm font-medium bg-white/10 hover:bg-white/15 border border-white/10 rounded-lg text-white transition">
+          Download
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Section Principale (Hero) -->
+  <main class="max-w-6xl mx-auto px-6 py-16 md:py-24 w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Colonne Gauche : Titre & Téléchargement -->
+      <div class="lg:col-span-7 space-y-6">
+        
+        <!-- Badge version -->
+        <div class="inline-flex items-center gap-2.5 text-xs font-medium text-zinc-300 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>Minecraft: Java Edition</span>
+          <span class="text-zinc-600">•</span>
+          <span class="text-violet-300">Third party launcher for One Client</span>
+        </div>
+
+        <!-- Titre -->
+        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.1]">
+          The client you love, <br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-fuchsia-400 to-pink-400">
+            launched faster.
+          </span>
+        </h1>
+
+        <!-- Description -->
+        <p class="text-base sm:text-lg text-zinc-300/90 max-w-xl leading-relaxed">
+          <strong class="text-white font-semibold">Femboycraft</strong> is a lightweight, fast, and streamlined third-party launcher built specifically for One Client. Enjoy instant startup, optimized memory allocation, and zero bloatware.
+        </p>
+
+        <!-- Boutons d'action -->
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <!-- LIEN DIRECT VERS TON .EXE -->
+          <a href="https://github.com/TON-PSEUDO/TON-REPO/releases/download/v1.0.0/Femboy-Craft-Setup-1.0.0.exe" 
+             download="Femboy-Craft-Setup-1.0.0.exe"
+             class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-semibold text-sm shadow-lg shadow-violet-600/30 transition transform hover:-translate-y-0.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            Download the launcher
+          </a>
+
+          <a href="https://github.com/TON-PSEUDO/TON-REPO" target="_blank"
+             class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold text-sm transition">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+
+        <!-- Détails du fichier (OS, Version, Taille) -->
+        <div class="pt-2 space-y-2 text-xs text-zinc-400">
+          <div class="flex items-center gap-4 text-zinc-300 font-medium">
+            <span class="flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 text-violet-400" fill="currentColor" viewBox="0 0 24 24"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
+              Windows (64-bit)
+            </span>
+            <span class="text-zinc-600">•</span>
+            <span class="font-mono text-zinc-400">Femboy-Craft-Setup-1.0.0.exe</span>
+          </div>
+          <div class="flex items-center gap-2 text-zinc-500">
+            <span>Launcher v1.0.0</span>
+            <span>•</span>
+            <span>300 MB</span>
+            <span>•</span>
+            <span>Direct Installer</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Colonne Droite : Carte Benchmarks interactive (style Horizon) -->
+      <div id="benchmarks" class="lg:col-span-5">
+        <div class="rounded-2xl bg-[#131122]/90 border border-white/10 p-6 sm:p-8 shadow-2xl backdrop-blur-xl">
+          
+          <div class="text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-2">
+            Benchmarks
+          </div>
+          <div class="text-3xl font-extrabold text-white mb-2">
+            <span id="multiplierText" class="text-violet-400">3×</span> the frame rate.
+          </div>
+          <p class="text-xs text-zinc-400 leading-relaxed mb-8">
+            Average frames per second with custom JVM flags and One Client optimizations enabled.
+          </p>
+
+          <!-- Barre Femboycraft -->
+          <div class="mb-6">
+            <div class="flex items-end justify-between mb-2">
+              <span class="flex items-center gap-2 text-sm font-semibold text-white">
+                <span class="w-2 h-2 rounded-full bg-violet-500"></span>
+                Femboycraft
+              </span>
+              <div class="text-right">
+                <span id="femboyFps" class="text-3xl font-extrabold text-white">180</span>
+                <span class="text-xs text-zinc-400 ml-1">fps</span>
+              </div>
+            </div>
+            <div class="w-full h-2.5 bg-[#221f38] rounded-full overflow-hidden">
+              <div id="femboyBar" class="h-full bg-gradient-to-r from-violet-600 to-fuchsia-500 rounded-full transition-all duration-150" style="width: 75%;"></div>
+            </div>
+          </div>
+
+          <!-- Barre Standard Launcher -->
+          <div class="mb-6">
+            <div class="flex items-end justify-between mb-2">
+              <span class="flex items-center gap-2 text-sm font-medium text-zinc-400">
+                <span class="w-2 h-2 rounded-full bg-zinc-500"></span>
+                Standard launcher
+              </span>
+              <div class="text-right">
+                <span id="standardFps" class="text-2xl font-bold text-zinc-300">60</span>
+                <span class="text-xs text-zinc-500 ml-1">fps</span>
+              </div>
+            </div>
+            <input id="fpsSlider" type="range" min="30" max="140" value="60" class="w-full" />
+          </div>
+
+          <p class="text-[11px] text-zinc-500 pt-2 border-t border-white/5">
+            Drag the standard launcher bar to simulate your own hardware frame rate. Results vary with hardware.
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Section Features rapide -->
+    <section id="features" class="mt-24 pt-12 border-t border-white/5 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/5">
+        <h3 class="text-white font-semibold mb-2">Built for One Client</h3>
+        <p class="text-sm text-zinc-400 leading-relaxed">Pre-configured profiles, automatic client updates, and instant launch parameters tailored for One Client.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/5">
+        <h3 class="text-white font-semibold mb-2">Tuned JVM Arguments</h3>
+        <p class="text-sm text-zinc-400 leading-relaxed">Includes optimized G1GC garbage collection flags out of the box to eliminate micro-stutters during PvP.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/5">
+        <h3 class="text-white font-semibold mb-2">Clean & Lightweight</h3>
+        <p class="text-sm text-zinc-400 leading-relaxed">No background telemetry or unnecessary processes hogging your RAM while you play.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Pied de page avec mentions obligatoires -->
+  <footer class="w-full border-t border-white/10 bg-[#08070e]/90 backdrop-blur-md py-8 mt-12">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-400">
+      <div class="font-medium text-zinc-300">
+        © 2026 Femboycraft Launcher. All rights reserved.
+      </div>
+      <div class="text-center sm:text-right space-y-1 text-zinc-400">
+        <p class="font-medium text-zinc-300">
+          Not affiliated with Mojang or Microsoft. Not affiliated with One Client.
+        </p>
+        <p class="text-[11px] text-zinc-500">
+          Minecraft is a trademark of Mojang Synergies AB.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script pour le simulateur FPS -->
+  <script>
+    const slider = document.getElementById('fpsSlider');
+    const standardFpsEl = document.getElementById('standardFps');
+    const femboyFpsEl = document.getElementById('femboyFps');
+    const femboyBar = document.getElementById('femboyBar');
+    const multiplierText = document.getElementById('multiplierText');
+
+    slider.addEventListener('input', (e) => {
+      const baseFps = parseInt(e.target.value, 10);
+      const boostedFps = Math.round(baseFps * 3);
+      
+      standardFpsEl.textContent = baseFps;
+      femboyFpsEl.textContent = boostedFps;
+      multiplierText.textContent = '3×';
+
+      const percentage = Math.min(100, Math.round((boostedFps / 420) * 100));
+      femboyBar.style.width = percentage + '%';
+    });
+  </script>
+
+</body>
+</html>
