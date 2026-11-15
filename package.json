@@ -1,0 +1,43 @@
+{
+  "name": "femboycraft-launcher",
+  "version": "1.0.0",
+  "description": "Launcher Minecraft Windows, pastel et personnalisable",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist:win": "electron-builder --win nsis"
+  },
+  "dependencies": {
+    "@loontail/minecraft-kit": "^0.10.0",
+    "msmc": "^5.0.5",
+    "yauzl": "^3.4.0"
+  },
+  "devDependencies": {
+    "electron": "^45.3.2",
+    "electron-builder": "^26.18.0"
+  },
+  "build": {
+    "appId": "com.femboycraft.launcher",
+    "productName": "Femboy-Craft",
+    "artifactName": "${productName}-Setup-${version}.${ext}",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!dist/**",
+      "!README.md"
+    ],
+    "win": {
+      "icon": "assets/femboycraft.ico",
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Femboy-Craft"
+    }
+  }
+}
